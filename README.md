@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+IntoView is a basic internal app used by HonestRealtors™️ to manage viewings and property listings.
 
-Things you may want to cover:
+It's 90% an internal app, though we ocassionaly share property pages with clients, or on listings.
 
-* Ruby version
+## Installation
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. Clone the repo to your local machine
+2. Ensure you have the correct version of ruby installed (we recommend using asdf or rbenv). Check .tool-versions for details.
+3. Run `bundle install` to install the gems
+4. Run `rails test` to ensure all tests are passing
+5. Run `rails s` to start the server
