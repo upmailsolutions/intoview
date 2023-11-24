@@ -25,9 +25,9 @@ class PropertyTest < ActiveSupport::TestCase
     assert_not property.save
   end
 
-  test "should save with no slug" do
+  test "should not save with no slug" do
     property = Property.new(valid_params.except(:slug))
-    assert property.save
+    assert_not property.save
   end
 
   test "should not save with duplicate slug" do
@@ -36,13 +36,5 @@ class PropertyTest < ActiveSupport::TestCase
 
     property2 = Property.new(valid_params)
     assert_not property2.save
-  end
-
-  test "should save with duplicate blank slug" do
-    property = Property.new(valid_params.except(:slug))
-    property.save
-
-    property2 = Property.new(valid_params.except(:slug))
-    assert property2.save
   end
 end

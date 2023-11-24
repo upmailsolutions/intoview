@@ -10,4 +10,6 @@ class Property < ApplicationRecord
     return true if slug.nil?
     errors.add(:slug, "Slug is invalid format") unless slug.match?(/\A[a-z0-9-]+\z/)
   end
+
+  validates :slug, presence: true, on: :create
 end
