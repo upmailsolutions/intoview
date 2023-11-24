@@ -24,7 +24,12 @@ class PropertiesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show property" do
-    get property_url(@property)
+    get property_url(@property.id)
+    assert_response :success
+  end
+
+  test "should show property with slug" do
+    get property_url(@property.slug)
     assert_response :success
   end
 

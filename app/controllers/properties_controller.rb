@@ -49,11 +49,11 @@ class PropertiesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_property
-      @property = Property.find(params[:id])
+      @property = Property.find_by(slug: params[:id]) || Property.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def property_params
-      params.require(:property).permit(:name, :description)
+      params.require(:property).permit(:name, :description, :slug)
     end
 end

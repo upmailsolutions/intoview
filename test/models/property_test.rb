@@ -3,7 +3,11 @@ require "test_helper"
 class PropertyTest < ActiveSupport::TestCase
   # default params
   def valid_params
-    {name: "Wardrobe", description: "Spacious wardrobe with excellent amenities."}
+    {
+      name: "Wardrobe",
+      slug: "spacious-one-bed",
+      description: "Spacious one-bed-apartment with excellent amenities."
+    }
   end
 
   test "should save property with valid params" do
@@ -19,5 +23,26 @@ class PropertyTest < ActiveSupport::TestCase
   test "should not save property without description" do
     property = Property.new(valid_params.except(:description))
     assert_not property.save
+  end
+
+  test "should save with no slug" do
+    property = Property.new(valid_params.except(:slug))
+    assert property.save
+  end
+
+  test "should not save with duplicate slug" do
+    property = Property.new(valid_params)
+    property.save
+
+    property2 = Property.new(valid_params)
+    assert_not property2.save
+  end
+
+  test "should save with duplicate blank slug" do
+    property = Property.new(valid_params.except(:slug))
+    property.save
+
+    property2 = Property.new(valid_params.except(:slug))
+    assert property2.save
   end
 end
